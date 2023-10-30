@@ -153,6 +153,7 @@ func collect_coin():
 	coins += 1
 	
 	coin_collected.emit(coins)
+	FMODStudioModule.get_studio_system().set_parameter_by_name("CoinCount", coins, false)
 
 func handle_footstep_sfx():
 	var t = animation.current_animation_position / animation.current_animation_length

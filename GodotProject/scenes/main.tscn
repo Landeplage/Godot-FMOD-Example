@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqqgyqafm7xwp"]
+[gd_scene load_steps=19 format=3 uid="uid://bqqgyqafm7xwp"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_ahusb"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_onms2"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scripts/hud.gd" id="11_apvpm"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="13_drtpy"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
+[ext_resource type="EventAsset" uid="uid://c8oxea0fcst8" path="res://addons/FMOD/editor/resources/events/{848bd29f-d520-4d21-9537-48705a0bc9d6}.tres" id="14_6yvnh"]
+[ext_resource type="EventAsset" uid="uid://5jdfxgndfxat" path="res://addons/FMOD/editor/resources/events/{7ba0ab50-0e05-4ae9-9a2a-bb6feeb06050}.tres" id="15_d7cc3"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
@@ -187,5 +189,15 @@ preload_sample_data = true
 num_banks = 2
 bank_0 = SubResource("BankAsset_qfihb")
 bank_1 = SubResource("BankAsset_ey02h")
+
+[node name="Ambience" type="StudioEventEmitter2D" parent="FMOD"]
+play_event = 2
+stop_event = 3
+event = ExtResource("14_6yvnh")
+
+[node name="Music" type="StudioEventEmitter2D" parent="FMOD"]
+play_event = 2
+stop_event = 3
+event = ExtResource("15_d7cc3")
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]

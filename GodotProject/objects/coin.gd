@@ -3,6 +3,9 @@ extends Area3D
 var time := 0.0
 var grabbed := false
 
+@export_subgroup("Audio")
+@export var fmod_event_collect : EventAsset
+
 # Collecting coins
 
 func _on_body_entered(body):
@@ -10,7 +13,7 @@ func _on_body_entered(body):
 		
 		body.collect_coin()
 		
-		Audio.play("res://sounds/coin.ogg") # Play sound
+		RuntimeManager.play_one_shot(fmod_event_collect, self)
 		
 		$Mesh.queue_free() # Make invisible
 		$Particles.emitting = false # Stop emitting stars
